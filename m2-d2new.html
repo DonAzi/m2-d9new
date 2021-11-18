@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<!-- MANDATORY JS EXERCISES (create a different file for this exercise)
+    1) Save this array in a variable called genres: ["Comedy", "Drama", "Romance", "Horror", "Sci-Fi", "Documentary"]
+    2) Create an unordered list using JavaScript and save it in a variable
+    3) Cycle the array and create a list-item via JavaScript for every element
+    4) Insert the genere as text in the list-item
+    5) Append the list items in the unordered list
+    6) Append the unordered list in the document. The list should appear in the page.
+-->
+
+<!-- M2-D2 ASSIGNMENT TOPIC
+You are creating a website to showcase your favourite music albums.
+In this page you will have a short biography section about yourself, the top albums of your life, 
+the worst album you ever listened to and everything related to the music you love.
+
+ASSIGNMENT RULES
+- The project must be pushed to a new repository and linked in EduFlow by the end of the day.
+- You can google / use StackOverflow BUT we suggest you to use just the material provided and documentation.
+- To test the page, open it with your browser and inspect it with developer tools / device emulator.
+- Use Bootstrap4.6 classes to create the page.
+- Use containers, rows and cols in order to achieve a great responsive layout.
+
+NOTE:
+Even the most experienced designers need inspiration.
+Spend some time surfing the web researching the best way of representing the albums you love.
+Could be the Amazon way, the Spotify or Apple music way or any other music collection out there.
+
+HINT: Manage your time in order to finish the structure and responsiveness before focusing on the details.
+-->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>M2-day-two</title>
+    <!-- IMPORT ALL THE BOOTSTRAP RELATED CSS & SCRIPTS-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      /* EXERCISE 1
+            For every Album displayed in the page we'd like to have a consistent appearence.
+            Create the template of an Album component (you can start from a bootstrap one or create your own)
+            You will use it to display every album in the page.
+            
+            You should have consistency in these elements:
+            - The album card
+            - The album cover
+            - The album title
+            - The album group / singer / dj
+            - The album genre
+            - The album duration
+            - etc
+
+            create CSS rules to style them if needed
+            ...to make sure every Album component looks the same.
+        */
+      body {
+        background-color: rgba(255, 255, 255, 0.534);
+      }
+      .navbar {
+        color: green !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- EXERCISE 2 
+            Implement a navigation bar using the bootstrap component
+            This navigation bar must link every section in your page.
+        -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+      <!--my texts must be color green same as search button but didnt work, pls help-->
+      <a class="navbar-brand" href="#">MyNav</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#best-albums">Recently Played</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+    <!-- EXERCISE 3
+            Create a responsive section for your favourite albums.
+            In this section you should have:
+            - 4 albums per row when the screen is very large
+            - 3 albums per row when you are on a tablet (or a smaller viewport)
+            - 2 albums per row when you are on a small screen
+        -->
+    <div id="best-albums" class="container my-5">
+      <h2 class="headers">Recently Played</h2>
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+          <div class="card">
+            <img
+              class="img-fluid"
+              src="https://m.media-amazon.com/images/I/81Abp4J45KL._AC_SL1500_.jpg"
+              class="card-img-top"
+              alt="picture"
+            />
+            <div class="card-body">
+              <p class="card-text">Hans - The Dark Knight</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+          <div class="card">
+            <img
+              class="img-fluid"
+              src="https://img.discogs.com/vPu8ORPUtAN6-8L8EczFXaHLHXA=/fit-in/600x592/filters:strip_icc():format(webp):mode_rgb():quality(90)/discogs-images/R-3296623-1324493983.jpeg.jpg"
+              class="card-img-top"
+              alt="picture"
+            />
+            <div class="card-body">
+              <p class="card-text">Ludovico Eunadi - ISLANDS</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+          <div class="card">
+            <img
+              class="img-fluid"
+              src="http://3.bp.blogspot.com/-Mx-LtMsShSs/Vc-gYEs0SrI/AAAAAAAAAXM/AqrsjItuMO0/s1600/Pirates%2BOf%2BThe%2BCaribbean-%2BAt%2BWorld%2527s%2BEnd.jpg"
+              class="card-img-top"
+              alt="picture"
+            />
+            <div class="card-body">
+              <p class="card-text">Hans Zimmer - World's End</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+          <div class="card">
+            <img
+              class="img-fluid"
+              src="https://thescoredesigns.files.wordpress.com/2015/09/potc2dmc-cd1.jpg"
+              class="card-img-top"
+              alt="picture"
+            />
+            <div class="card-body">
+              <p class="card-text">Zimmer - Dead Man's Chest</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+          <div class="card">
+            <img
+              class="img-fluid"
+              src="https://thescoredesigns.files.wordpress.com/2015/09/potc2dmc-cd1.jpg"
+              class="card-img-top"
+              alt="picture"
+            />
+            <div class="card-body">
+              <p class="card-text">Zimmer - Dead Man's Chest</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+          <div class="card">
+            <img
+              class="img-fluid"
+              src="http://3.bp.blogspot.com/-Mx-LtMsShSs/Vc-gYEs0SrI/AAAAAAAAAXM/AqrsjItuMO0/s1600/Pirates%2BOf%2BThe%2BCaribbean-%2BAt%2BWorld%2527s%2BEnd.jpg"
+              class="card-img-top"
+              alt="picture"
+            />
+            <div class="card-body">
+              <p class="card-text">Hans Zimmer - World's End</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+          <div class="card">
+            <img
+              class="img-fluid"
+              src="https://img.discogs.com/vPu8ORPUtAN6-8L8EczFXaHLHXA=/fit-in/600x592/filters:strip_icc():format(webp):mode_rgb():quality(90)/discogs-images/R-3296623-1324493983.jpeg.jpg"
+              class="card-img-top"
+              alt="picture"
+            />
+            <div class="card-body">
+              <p class="card-text">Ludovico Eunadi - ISLANDS</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+          <div class="card">
+            <img
+              class="img-fluid"
+              src="https://m.media-amazon.com/images/I/81Abp4J45KL._AC_SL1500_.jpg"
+              class="card-img-top"
+              alt="picture"
+            />
+            <div class="card-body">
+              <p class="card-text">Hans - The Dark Knight</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <!-- EXERCISE 4
+            Create a section for the album reviews.
+            Pick one of your favourite albums, and create a section with:
+            - Cover Image
+            - Title
+            - Band
+            - Duration
+            - Genre
+            - Tracklist
+            - ... And whatever you think it's interesting about it!
+        -->
+    <section id="album-rev">
+      <div class="container my-5">
+        <h2 class="headers">Album reviews</h2>
+        <div class="row my-4">
+          <div class="col-12 col-md-4">
+            <img
+              class="img-fluid h-50"
+              src="https://i.ytimg.com/vi/nR4v5Cm29ro/maxresdefault.jpg"
+              alt="Sari Gelin"
+            />
+          </div>
+          <div class="col-12 col-md-8">
+            <div class="d-flex flex-column h-100">
+              <h4 class="font-weight-bold font-italic text-dark">
+                Sami Yusuf - Sari Gelin
+              </h4>
+              <blockquote class="font-italic text-dark">
+                <a href="https://en.wikipedia.org/wiki/Sari_Gelin">Sari Gelin</a
+                >(Azerbaijani: Sarı Gəlin, IPA: [ˈsαːɾɯ gʲæˈlʲin]; ساری گلین‎;
+                Persian: دامن کشان‎, romanized: Dāman Kešān) is the name for a
+                number of folk songs popular among the people of Iran, the
+                southern Caucasus (most prominently present-day Azerbaijan and
+                Armenia) and in eastern Anatolia in present-day Turkey. All
+                versions of the song use the same melody and are written in the
+                Bayati makam or mode, but are sung with different lyrics. The
+                consensus about its country of origin is contested. Sari Gelin
+                is either a blond bride or a girl from the mountains, depending
+                on the respective lyric language.
+              </blockquote>
+              <button type="button">click me</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr />
+    <!-- EXERCISE 5
+            Worst album list! Choose the albums you dislike or some you think are overrated and list it
+            in this "hall of shame" chart! 
+        -->
+    <section class="hall-of-shame">
+      <div class="container my-5">
+        <h2 class="headers">The most disliked songs</h2>
+        <div class="row justify-content-center">
+          <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+            <div class="card">
+              <img
+                class="img-fluid"
+                src="/racine-caree.jpg"
+                class="card-img-top"
+                alt="picture"
+              />
+              <div class="card-body">
+                <p class="card-text">disliked song</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+            <div class="card">
+              <img
+                class="img-fluid"
+                src="/r-a-m.jpg"
+                class="card-img-top"
+                alt="picture"
+              />
+              <div class="card-body">
+                <p class="card-text">disliked song</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+            <div class="card">
+              <img
+                class="img-fluid"
+                src="/the-open-door.jpeg"
+                class="card-img-top"
+                alt="picture"
+              />
+              <div class="card-body">
+                <p class="card-text">disliked song</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXERCISE 6
+            Do you have any musician / band you admire or you are a fan of?
+            This section is dedicated to him / her / them!
+            Feel free to experiment in this part of the page.
+        -->
+    <hr />
+    <div
+      id="carouselExampleCaptions"
+      class="container carousel slide"
+      data-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-target="#carouselExampleCaptions"
+          data-slide-to="0"
+          class="active"
+        ></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="https://cdn-2.tstatic.net/surabaya/foto/bank/images/mawlaya-maher-zain.jpg"
+            class="d-block w-100"
+            alt="mawlaya"
+          />
+          <div class="carousel-caption d-none d-md-block text-dark"></div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://i.ytimg.com/vi/NqMpM-daY1E/maxresdefault.jpg"
+            class="d-block w-100"
+            alt="ummi sami yusuf"
+          />
+          <div class="carousel-caption d-none d-md-block"></div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://i.ytimg.com/vi/F9E8nIKjkYc/maxresdefault.jpg"
+            class="d-block w-100"
+            alt="alBano Felicita"
+          />
+          <div class="carousel-caption d-none d-md-block"></div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-target="#carouselExampleCaptions"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-target="#carouselExampleCaptions"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </button>
+    </div>
+
+    <!-- EXERCISE 7
+            Just covers!
+            Create a tapestry of album pictures. Every album picture must be "squared" (use CSS to achieve that).
+            Put at least 20 covers (also repeated) to have a nice tapestry effect and see how Bootstrap handles it.
+        -->
+    <div class="container-fluid justify-content-center">
+      <div class="col-12">
+        <div class="headers">Ther Tapestry Thingggg</div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-lg-3 album-tapestry">
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
+        </div>
+      </div>
+    </div>
+
+    <!-- EXERCISE 8
+            Implement a footer with some information / social links.
+        -->
+    <footer>
+      <div class="footer">
+        im Footer but somehow in the wrong place, PLs help me!!!
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga
+          veritatis esse, vero sit ex ea placeat modi aut veniam repellat
+          maiores perspiciatis voluptatum quo id, amet explicabo. Enim, labore
+          aspernatur!
+        </p>
+      </div>
+    </footer>
+
+    <!-- ############ EXTRA:
+        EXERCISE 9
+            Create an album details area which will be toggled on and off by clicking on the album image.
+        -->
+
+    <!-- EXERCISE 10
+            Add a button to each section. By clicking on it the section body appears (if hidden) or disappears (if visible).
+            (hint: look for a boostrap component that can handle the job for you. You can always rely on DOM manipulation if you can't find it)
+        -->
+
+    <!--
+         EXERCISE 11
+            Add in the footer the number of how many ALBUMS are present on the page. 
+            Create the JavaScript logic that runs when the page finished loading and 
+            counts the albums and applies the number in the area of the footer you've previously decided.
+        -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
+    <script src="genres.js"></script>
+  </body>
+</html>
