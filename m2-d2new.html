@@ -7,27 +7,32 @@
     5) Append the list items in the unordered list
     6) Append the unordered list in the document. The list should appear in the page.
 -->
+<!--   EXERCISE 1
+        Create a Jumbotron section with a quick explanation / image of the website.
+        Make it appear with a fade-in animation effect when the page loads.
+    -->
 
-<!-- M2-D2 ASSIGNMENT TOPIC
-You are creating a website to showcase your favourite music albums.
-In this page you will have a short biography section about yourself, the top albums of your life, 
-the worst album you ever listened to and everything related to the music you love.
+<!-- EXERCISE 2
+        Use a Bootstrap Card to contain every album in the favorite list you previously created.
+        Use the elements of a card bootstrap provides you with to display nicely the album informations such as: album title, artist, year, etc..
+    -->
 
-ASSIGNMENT RULES
-- The project must be pushed to a new repository and linked in EduFlow by the end of the day.
-- You can google / use StackOverflow BUT we suggest you to use just the material provided and documentation.
-- To test the page, open it with your browser and inspect it with developer tools / device emulator.
-- Use Bootstrap4.6 classes to create the page.
-- Use containers, rows and cols in order to achieve a great responsive layout.
+<!-- EXERCISE 3
+        Foreach album in the favorite list, place a badge on the top-left corner of the album with the genre of the music
+    -->
 
-NOTE:
-Even the most experienced designers need inspiration.
-Spend some time surfing the web researching the best way of representing the albums you love.
-Could be the Amazon way, the Spotify or Apple music way or any other music collection out there.
+<!-- EXERCISE 4
+        Create a new section with an album tracklist inside a Bootstrap table.
+        The row colors of the table must be alternated.
 
-HINT: Manage your time in order to finish the structure and responsiveness before focusing on the details.
--->
+        There should be a column for the track order number, one for the title and one for the track duration.
+        (If you want, you can also add extra columns)
+    -->
 
+<!-- EXERCISE 5
+        Add a DELETE bootstrap button at the end of each row of the tracklist. 
+        Attach the functionality to remove its row when it gets clicked. (Requires DOM manipulation)  
+ -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -35,7 +40,7 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>M2-day-two</title>
+    <title>iMusica</title>
     <!-- IMPORT ALL THE BOOTSTRAP RELATED CSS & SCRIPTS-->
     <link
       rel="stylesheet"
@@ -65,9 +70,79 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
       body {
         background-color: rgba(255, 255, 255, 0.534);
       }
-      .navbar {
-        color: green !important;
+      
+      .btn-shadow {
+  transition: all 0.3s ease;
+}
+
+.btn-shadow:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px #8dcf73;
+}
+      #jumbo-intro {
+        animation: fadein 2s 1s both;
+        /* background-color: green; */
       }
+
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      /* ex2 */
+      .bg-intro {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        opacity: 0.7;
+      }
+      /* EX 3 */
+      .album-container .badge {
+        position: absolute;
+        top: 100rem;
+        right: 0;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+      }
+
+      table thead tr {
+  background-color: transparent;
+  border: none;
+}
+table tbody tr {
+  background-color: #ffffff;
+}
+table tbody tr:nth-of-type(odd) {
+  background-color: rgb(212, 209, 209);
+}
+
+.table thead th,
+.table tbody th,
+.table thead td,
+.table tbody td {
+  border: none;
+  
+}
+.table td,
+.table th {
+  vertical-align: middle;
+}
+.tracklist tr button {
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.tracklist tr:hover button {
+  opacity: 1;
+}
+
     </style>
   </head>
 
@@ -76,9 +151,10 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
             Implement a navigation bar using the bootstrap component
             This navigation bar must link every section in your page.
         -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
-      <!--my texts must be color green same as search button but didnt work, pls help-->
-      <a class="navbar-brand" href="#">MyNav</a>
+    <section id="jumbo-intro" class="position-relative">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand font-weight-bolder" href="#">iMusic</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -94,16 +170,18 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#"
+            <a class="nav-link " href="#"
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#best-albums">Recently Played</a>
+            <a class="nav-link " href="#best-albums"
+              >Recently Played</a
+            >
           </li>
           <li class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle"
+              class="nav-link dropdown-toggle "
               href="#"
               id="navbarDropdown"
               role="button"
@@ -122,17 +200,30 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input
-            class="form-control mr-sm-2"
+            class="form-control mr-sm-2 bg-transparent"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
             Search
           </button>
         </form>
       </div>
-    </nav>
+     </nav>
+
+      <img
+        class="bg-intro"
+        src="https://images.unsplash.com/photo-1637217204682-0508e4d17d40?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
+      />
+      <div class="container">
+        <div class="jumbotron bg-transparent">
+          <h1 class="display-4 text-white font-italic">Welcome!<br /></h1>
+          <p class="lead text-white font-italic">Peace be upon you ALL.</p>
+          <hr class="my-4" />
+        </div>
+      </div>
+    </section>
     <!-- EXERCISE 3
             Create a responsive section for your favourite albums.
             In this section you should have:
@@ -144,13 +235,15 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
       <h2 class="headers">Recently Played</h2>
       <div class="row">
         <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-          <div class="card">
+          <div class="card position-relative">
             <img
               class="img-fluid"
               src="https://m.media-amazon.com/images/I/81Abp4J45KL._AC_SL1500_.jpg"
               class="card-img-top"
               alt="picture"
             />
+            <span class="badge bg-purple p-2">Rock</span>
+
             <div class="card-body">
               <p class="card-text">Hans - The Dark Knight</p>
             </div>
@@ -267,7 +360,7 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
         <div class="row my-4">
           <div class="col-12 col-md-4">
             <img
-              class="img-fluid h-50"
+              class="img-thumbnail"
               src="https://i.ytimg.com/vi/nR4v5Cm29ro/maxresdefault.jpg"
               alt="Sari Gelin"
             />
@@ -290,11 +383,52 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
                 is either a blond bride or a girl from the mountains, depending
                 on the respective lyric language.
               </blockquote>
-              <button type="button">click me</button>
             </div>
           </div>
-        </div>
+            <div class="col-12 my-5">
+                <table class="table text-dark">
+                  <!-- <table class="table table-dark table-striped"> -->
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Title</th>
+                      <th>Duration</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody class="tracklist">
+                    <tr>
+                      <th>1</th>
+                      <td>Vivaldi</td>
+                      <td>5:15</td>
+                      <td class="text-right"><button class="btn btn-outline-danger"
+                          onclick="removeClosest(event)">Delete</button></td>
+                    </tr>
+                    <tr">
+                      <th>2</th>
+                      <td>Tutanhamon</td>
+                      <td>4:28</td>
+                      <td class="text-right"><button class="btn btn-outline-danger"
+                          onclick="removeClosest(event)">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <th>3</th>
+                      <td>You came To Me</td>
+                      <td>5:02</td>
+                      <td class="text-right"><button class="btn btn-outline-danger"
+                          onclick="removeClosest(event)">Delete</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div>
+                  <button class="btn btn-outline-success btn-shadow" data-toggle="modal" data-target="#add-track-modal">
+                    Add track </button>
+                </div>
+              </div>
+				</div>
+       
       </div>
+      
     </section>
     <hr />
     <!-- EXERCISE 5
@@ -309,7 +443,7 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
             <div class="card">
               <img
                 class="img-fluid"
-                src="/racine-caree.jpg"
+                src="/assets/racine-caree.jpg"
                 class="card-img-top"
                 alt="picture"
               />
@@ -322,7 +456,7 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
             <div class="card">
               <img
                 class="img-fluid"
-                src="/r-a-m.jpg"
+                src="/assets/r-a-m.jpg"
                 class="card-img-top"
                 alt="picture"
               />
@@ -335,7 +469,7 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
             <div class="card">
               <img
                 class="img-fluid"
-                src="/the-open-door.jpeg"
+                src="/assets/racine-caree.jpg"
                 class="card-img-top"
                 alt="picture"
               />
@@ -419,41 +553,53 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
             Create a tapestry of album pictures. Every album picture must be "squared" (use CSS to achieve that).
             Put at least 20 covers (also repeated) to have a nice tapestry effect and see how Bootstrap handles it.
         -->
-    <div class="container-fluid justify-content-center">
-      <div class="col-12">
-        <div class="headers">Ther Tapestry Thingggg</div>
-      </div>
+    <div class="container-fluid my-5 justify-content-center">
+      <h2 class="headers">The Tapestryg</h2>
       <div class="row">
-        <div class="col-12 col-lg-3 album-tapestry">
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-          <img src="https://placehold.it/200x1500" class="img-fluid squared" />
-        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <img class="img-fluid" src="assets/r-a-m.jpg" />
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 ">
+            <img class="img-fluid" src="assets/r-a-m.jpg" />
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 ">
+            <img class="img-fluid" src="assets/r-a-m.jpg" />
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 ">
+            <img class="img-fluid" src="assets/r-a-m.jpg" />
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 ">
+            <img class="img-fluid" src="assets/r-a-m.jpg" />
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 ">
+            <img class="img-fluid" src="assets/r-a-m.jpg" />
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 ">
+            <img class="img-fluid" src="assets/r-a-m.jpg" />
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 ">
+            <img class="img-fluid" src="assets/r-a-m.jpg" />
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 ">
+            <img class="img-fluid" src="assets/r-a-m.jpg" />
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 ">
+            <img class="img-fluid" src="assets/r-a-m.jpg" />
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 ">
+            <img class="img-fluid" src="assets/r-a-m.jpg" />
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 ">
+            <img class="img-fluid" src="assets/r-a-m.jpg" />
+          </div>
       </div>
     </div>
 
     <!-- EXERCISE 8
             Implement a footer with some information / social links.
         -->
-    <footer>
-      <div class="footer">
+    <footer class="text-white mt-5">
+      <div class="footer bg-dark h-50 text-center">
         im Footer but somehow in the wrong place, PLs help me!!!
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga
@@ -491,6 +637,10 @@ HINT: Manage your time in order to finish the structure and responsiveness befor
       integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
       crossorigin="anonymous"
     ></script>
-    <script src="genres.js"></script>
+    <script src="/genres.js"></script>
   </body>
 </html>
+
+
+
+
